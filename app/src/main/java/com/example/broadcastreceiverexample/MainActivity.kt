@@ -1,27 +1,27 @@
 package com.example.broadcastreceiverexample
 
+import android.Manifest
 import android.content.IntentFilter
-import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 class MainActivity : AppCompatActivity() {
 
-  //  lateinit var exampleBroadcastReceiver: ExampleBroadcastReceiver
+    lateinit var orderedReceiver1: OrderedReceiver1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-      //  exampleBroadcastReceiver = ExampleBroadcastReceiver()
+        orderedReceiver1 = OrderedReceiver1()
 
-//        val exampleFilter = IntentFilter("com.example.EXAMPLE_ACTION")
-//        exampleFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
-//
-//        registerReceiver(exampleBroadcastReceiver, exampleFilter)
+        val filter = IntentFilter("com.example.EXAMPLE_ACTION")
+        filter.priority = 1
+
+        registerReceiver(orderedReceiver1, filter, Manifest.permission.VIBRATE, null)
     }
 
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        unregisterReceiver(exampleBroadcastReceiver)
-//    }
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(orderedReceiver1)
+    }
 }
