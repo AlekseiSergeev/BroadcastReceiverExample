@@ -7,21 +7,21 @@ import android.os.Bundle
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var exampleBroadcastReceiver: ExampleBroadcastReceiver
+  //  lateinit var exampleBroadcastReceiver: ExampleBroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        exampleBroadcastReceiver = ExampleBroadcastReceiver()
+      //  exampleBroadcastReceiver = ExampleBroadcastReceiver()
 
-        val exampleFilter = IntentFilter("com.example.EXAMPLE_ACTION")
-        exampleFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
-
-        registerReceiver(exampleBroadcastReceiver, exampleFilter)
+//        val exampleFilter = IntentFilter("com.example.EXAMPLE_ACTION")
+//        exampleFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+//
+//        registerReceiver(exampleBroadcastReceiver, exampleFilter)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        unregisterReceiver(exampleBroadcastReceiver)
-    }
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        unregisterReceiver(exampleBroadcastReceiver)
+//    }
 }
